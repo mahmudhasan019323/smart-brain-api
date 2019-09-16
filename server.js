@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
-const cors = require('cors');
 const app = express();
 const knex = require('knex');
 const signup = require('./controllers/signup');
@@ -18,7 +17,7 @@ const db = knex({
         database: 'smart-brain'
     }
 });
-app.use(cors());
+
 app.use(bodyParser.json());
 
 app.post('/signin', (req,res)=>{signin.handleSignin(req,res,bcrypt,db)});
